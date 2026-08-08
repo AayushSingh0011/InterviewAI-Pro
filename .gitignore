@@ -1,1 +1,24 @@
-python
+
+# Secrets
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# VS Code
+.vscode/
+
+# Pytest
+.pytest_cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
