@@ -1,0 +1,42 @@
+[
+  {
+    "day": 1,
+    "topic": "Python Basics",
+    "questions": [
+      "What are Python data types?",
+      "What is the difference between a list and a tuple?"
+    ]
+  },
+  {
+    "day": 2,
+    "topic": "FastAPI",
+    "questions": [
+      "What is FastAPI?",
+      "What is a REST API?"
+    ]
+  },
+  {
+    "day": 3,
+    "topic": "Databases",
+    "questions": [
+      "What is SQL?",
+      "What is an ORM?"
+    ]
+  },
+  {
+    "day": 4,
+    "topic": "Machine Learning",
+    "questions": [
+      "What is supervised learning?",
+      "What is overfitting?"
+    ]
+  },
+  {
+    "day": 5,
+    "topic": "AI and Embeddings",
+    "questions": [
+      "What are embeddings?",
+      "How are embeddings used for semantic search?"
+    ]
+  }
+]
