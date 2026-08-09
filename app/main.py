@@ -1,12 +1,18 @@
-from fastapi import FastAPI
 
 from app.api.interview import router as interview_router
 
+from fastapi import FastAPI
+app.include_router(interview_router)
+
 app = FastAPI(
     title="InterviewAI Pro",
+    version="1.0.0",
     description="AI-powered adaptive technical interview backend",
-    version="1.0.0"
 )
+
+
+
+
 
 # Register API routes
 app.include_router(interview_router)
