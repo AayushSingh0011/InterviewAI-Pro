@@ -1,8 +1,5 @@
-
-from app.api.interview import router as interview_router
-
 from fastapi import FastAPI
-app.include_router(interview_router)
+from app.api.interview import router as interview_router
 
 app = FastAPI(
     title="InterviewAI Pro",
@@ -10,18 +7,13 @@ app = FastAPI(
     description="AI-powered adaptive technical interview backend",
 )
 
-
-
-
-
-# Register API routes
 app.include_router(interview_router)
 
 
 @app.get("/")
 def root():
     return {
-        "message": "InterviewAI Pro API is running 🚀",
+        "message": "InterviewAI Pro API is running",
         "status": "ok"
     }
 
