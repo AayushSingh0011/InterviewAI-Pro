@@ -219,7 +219,7 @@ def submit_answer(
 
         return {
             "evaluation": {
-                "score": 0,
+                "score": data.get("feedback", {}).get("overall_score", 0),
                 "feedback": data.get("feedback", ""),
             },
             "next_question": data.get("reply"),
@@ -258,5 +258,6 @@ def get_report(session_id: str) -> dict | None:
         return MOCK_REPORT
 
     return None
+
 
 
