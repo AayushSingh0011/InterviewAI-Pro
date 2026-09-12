@@ -809,7 +809,13 @@ def interview(
 #         }
 #     )
 
-#     return InterviewResponse(
-#         reply=reply,
-#         done=False,
-#     )
+#    return InterviewResponse(
+    reply=reply,
+    done=False,
+    feedback={
+        "summary": evaluation.interviewer_notes,
+        "strengths": evaluation.strengths,
+        "gaps": evaluation.weaknesses,
+        "next": [],
+        "overall_score": evaluation.overall_score,
+    },

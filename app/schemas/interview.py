@@ -18,6 +18,7 @@ class Feedback(BaseModel):
     strengths: list[str]
     gaps: list[str]
     next: list[str]
+    overall_score: float | None = None
 
 
 class InterviewResponse(BaseModel):
