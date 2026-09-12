@@ -46,6 +46,13 @@ session_manager = SessionManager()
 
 
 # ================================================================
+# INTERVIEW SETTINGS
+# ================================================================
+
+MAX_INTERVIEW_QUESTIONS = 8
+
+
+# ================================================================
 # CURRICULUM LOADER
 # ================================================================
 
@@ -132,6 +139,8 @@ def interview(
 
     Following requests:
         InterviewTurnRequest
+
+    The interview has a hard limit of 8 questions.
     """
 
     # ============================================================
@@ -359,7 +368,7 @@ def interview(
         )
 
         # ========================================================
-        # SAFETY CHECK
+        # SAFETY CHECKS
         # ========================================================
 
         if memory is None:
@@ -470,6 +479,33 @@ def interview(
         )
 
         # ========================================================
+        # HARD LIMIT: 8 QUESTIONS
+        #
+        # IMPORTANT:
+        # Check this BEFORE generating a follow-up or
+        # another normal question.
+        # ========================================================
+
+        if session.question_count >= MAX_INTERVIEW_QUESTIONS:
+
+            session.done = True
+
+            return InterviewResponse(
+                reply=(
+                    "Thank you. The AI interview "
+                    "is now complete."
+                ),
+                done=True,
+                feedback={
+                    "summary": evaluation.interviewer_notes,
+                    "strengths": evaluation.strengths,
+                    "gaps": evaluation.weaknesses,
+                    "next": [],
+                    "overall_score": evaluation.overall_score,
+                },
+            )
+
+        # ========================================================
         # FOLLOW-UP FOR WEAK ANSWER
         # ========================================================
 
@@ -559,7 +595,7 @@ def interview(
         except InterviewCompletedError:
 
             # ----------------------------------------------------
-            # Interview finished
+            # Interview finished because planner is exhausted
             # ----------------------------------------------------
 
             session.done = True
@@ -589,7 +625,9 @@ def interview(
                             "the interview."
                         )
                     ],
-                    "overall_score": evaluation.overall_score,
+                    "overall_score": (
+                        evaluation.overall_score
+                    ),
                 },
             )
 
